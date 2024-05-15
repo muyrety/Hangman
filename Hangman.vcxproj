@@ -33,6 +33,7 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Constants.h" />
     <ClInclude Include="output.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

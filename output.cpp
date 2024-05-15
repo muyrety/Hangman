@@ -1,10 +1,11 @@
+#include "Constants.h"
 #include "output.h"
+#include <cassert>
+#include <cstddef>
+#include <fstream>
 #include <iostream>
 #include <string_view>
-#include <cstddef>
 #include <vector>
-#include <cassert>
-#include <fstream>
 
 // prints out a picture of the hangman based on how many incorrect guesses have been made
 void printHangmanPicture(int tries) 
@@ -66,8 +67,8 @@ void printHangmanPicture(int tries)
 
 }
 
-// prints the playing letters into the console
-void printLetters(std::string_view letters) 
+// prints letters into the console with spaces in between
+void printLetters(std::string_view letters)
 {
 	for (auto i : letters) 
 	{
@@ -76,7 +77,7 @@ void printLetters(std::string_view letters)
 	std::cout << '\n';
 }
 
-// prints letters into the console with spaces in between. works with std::vector <char> and std::string_view
+// prints letters into the console with spaces in between
 void printLetters(const std::vector <char>& letters) 
 {
 	for (auto i : letters) 
@@ -86,13 +87,16 @@ void printLetters(const std::vector <char>& letters)
 	std::cout << '\n';
 }
 
-// used for writing the score to score.txt
-void writeScore(int guessed_easy, int guessed_medium, int guessed_hard) {
-	std::ofstream out_score("score.txt");
+// used for writing the score to a file
+void writeScore(int guessed_easy, int guessed_medium, int guessed_hard) 
+{
+	assert(guessed_easy >= 0 && guessed_medium >= 0 && guessed_hard >= 0);
 
-	out_score << guessed_easy << '\n'
-		<< guessed_medium << '\n'
-		<< guessed_hard << '\n';
+	std::ofstream out_score(FileNames::score_file);
+
+	out_score << guessed_easy << '\n';
+	out_score << guessed_medium << '\n';
+	out_score << guessed_hard << '\n';
 
 	out_score.close();
 }
@@ -100,19 +104,23 @@ void writeScore(int guessed_easy, int guessed_medium, int guessed_hard) {
 // used for printing players score to console
 void printScore(int guessed_easy, int guessed_medium, int guessed_hard) {
 
+	assert(guessed_easy >= 0 && guessed_medium >= 0 && guessed_hard >= 0);
+
 	std::cout << "You already guessed:\n";
 
 	// use "word" instead of "words" if player has only guessed one word
 	std::cout << guessed_easy << " easy " << ((guessed_easy == 1) ? "word" : "words") << '\n';
 
-	std::cout << guessed_easy << " easy " << ((guessed_medium == 1) ? "word" : "words") << '\n';
+	std::cout << guessed_medium << " medium " << ((guessed_medium == 1) ? "word" : "words") << '\n';
 
-	std::cout << guessed_easy << " easy " << ((guessed_hard == 1) ? "word" : "words") << '\n';
+	std::cout << guessed_hard << " hard " << ((guessed_hard == 1) ? "word" : "words") << '\n';
 }
 
 // used to display the title screen
 void titleScreen(int guessed_easy, int guessed_medium, int guessed_hard) 
 {
+	assert(guessed_easy >= 0 && guessed_medium >= 0 && guessed_hard >= 0);
+
 	std::cout << "Welcome to Hangman!\n";
 	printScore(guessed_easy, guessed_medium, guessed_hard);
 	std::cout << "Select your game mode:\n"

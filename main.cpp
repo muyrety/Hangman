@@ -17,10 +17,46 @@ void testprintLetters()
 
 }
 
+void testprintHangmanPicture()
+{
+	//printHangmanPicture(-1);
+	printHangmanPicture(0);
+	printHangmanPicture(1);
+	printHangmanPicture(2);
+	printHangmanPicture(3);
+	printHangmanPicture(4);
+	printHangmanPicture(5);
+	printHangmanPicture(6);
+	//printHangmanPicture(7);
+	//printHangmanPicture(-111);
+	//printHangmanPicture(500);
+}
 
+void testprintScore()
+{
+	printScore(1, 1, 1);
+	printScore(1, 2, 2);
+	printScore(5, 5, 5);
+	printScore(0, 0, 0);
+	printScore(500, 16, 567);
+	//printScore(-1, 7, 5);
+
+}
+
+void testtitleScreen()
+{
+	titleScreen(5, 2, 5);
+	//titleScreen(-1, 5, 6);
+	titleScreen(8989, 635, 54);
+}
+
+void testwriteScore()
+{
+	writeScore(1, 256, 65);
+}
 int main()
 {
-	testprintLetters();
+	testwriteScore();
 	return 0;
 }
 
