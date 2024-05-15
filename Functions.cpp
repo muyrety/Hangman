@@ -171,22 +171,6 @@ char getValidGuess(std::vector<char> incorrect_guesses, std::string game_letters
 	}
 }
 
-// used for changing the players score (in case of a win)
-void changeScore(int difficulty, int& guessed_easy, int& guessed_medium, int& guessed_hard) {
-
-	switch (difficulty) {
-	case 1:
-		++guessed_easy;
-		break;
-	case 2:
-		++guessed_medium;
-		break;
-	case 3:
-		++guessed_hard;
-		break;
-	}
-}
-
 // used to obtain a valid difficulty value from the user
 int getDifficulty() {
 
@@ -206,21 +190,6 @@ int getDifficulty() {
 		std::cin >> difficulty;
 	}
 	return difficulty;
-}
-
-bool readScore(int& guessed_easy, int& guessed_medium, int& guessed_hard) {
-	std::ifstream score("score.txt");
-	score >> guessed_easy
-		  >> guessed_medium
-		  >> guessed_hard;
-	if ( score.fail() ) {
-		score.close();
-		return false;
-	}
-	else {
-		score.close();
-		return true;
-	}
 }
 
 std::string topicChooser() {

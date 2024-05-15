@@ -87,20 +87,6 @@ void printLetters(const std::vector <char>& letters)
 	std::cout << '\n';
 }
 
-// used for writing the score to a file
-void writeScore(int guessed_easy, int guessed_medium, int guessed_hard) 
-{
-	assert(guessed_easy >= 0 && guessed_medium >= 0 && guessed_hard >= 0);
-
-	std::ofstream out_score(FileNames::score_file);
-
-	out_score << guessed_easy << '\n';
-	out_score << guessed_medium << '\n';
-	out_score << guessed_hard << '\n';
-
-	out_score.close();
-}
-
 // used for printing players score to console
 void printScore(int guessed_easy, int guessed_medium, int guessed_hard) {
 

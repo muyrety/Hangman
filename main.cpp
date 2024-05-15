@@ -1,7 +1,7 @@
 #define UNIT_TESTING
 
 #ifdef UNIT_TESTING
-#include "output.h"
+#include "display.h"
 
 void testprintLetters()
 {
