@@ -11,6 +11,6 @@ void printHangmanPicture(int tries);
 void printLetters(std::string_view game_letters);
 
 // prints incorrectly guessed letters into the console
-void printIncorrectLetters(const std::vector <char>& incorrect_guesses);
+void printLetters(const std::vector <char>& incorrect_guesses);
 
 #endif

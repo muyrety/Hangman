@@ -1,34 +1,8 @@
-
-
-#ifdef DEBUG
-
-#include "io.h"
-
-int main()
-{
-	printHangmanPicture(6);
-
-
-}
-
-#else
-
 #include <iostream>
 #include <string>
 #include <vector>
 #include <fstream>
-
-
-
-
-// prints out a picture of the hangman based on how many incorrect guesses have been made
-void printHangmanPicture(int tries);
-
-// prints the playing letters into the console
-void printLetters(std::string game_letters);
-
-// prints incorrectly guessed letters into the console
-void printIncorrectLetters(std::vector <char> incorrect_guesses);
+#include "io.h"
 
 // used for choosing a topic of playing or for returing "error" if it's not possible to retrieve it
 std::string topicChooser();
@@ -150,7 +124,8 @@ int main() {
 
 		printHangmanPicture(tries);
 		std::cout << "Topic of the word: " << topic << '\n';
-		printIncorrectLetters(incorrect_guesses);
+		std::cout << "Incorrect guesses:";
+		printLetters(incorrect_guesses);
 		printLetters(game_letters);
 
 
@@ -189,4 +164,4 @@ int main() {
 
 	return 0;
 }
-#endif // DEBUG
+

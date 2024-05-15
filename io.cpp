@@ -66,20 +66,19 @@ void printHangmanPicture(int tries)
 }
 
 // prints the playing letters into the console
-void printLetters(std::string_view game_letters) 
+void printLetters(std::string_view letters) 
 {
-	for (auto i : game_letters) 
+	for (auto i : letters) 
 	{
 		std::cout << " " << i;
 	}
 	std::cout << '\n';
 }
 
-// prints incorrectly guessed letters into the console
-void printIncorrectLetters(const std::vector <char>& incorrect_guesses) 
+// prints letters into the console with spaces in between. works with std::vector <char> and std::string_view
+void printLetters(const std::vector <char>& letters) 
 {
-	std::cout << "Incorrect guesses:";
-	for (auto i : incorrect_guesses) 
+	for (auto i : letters) 
 	{
 		std::cout << " " << i;
 	}
