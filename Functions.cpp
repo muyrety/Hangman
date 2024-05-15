@@ -6,7 +6,7 @@
 #include <cctype>
 
 // prints out a picture of the hangman based on how many incorrect guesses have been made
-void hangmanPicture(int tries) {
+void printHangmanPicture(int tries) {
 	switch (tries) {
 	case 0:
 		std::cout << "===================================\n"

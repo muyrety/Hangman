@@ -1,3 +1,18 @@
+#define DEBUG
+
+#ifdef DEBUG
+
+#include <io.h>
+
+int main()
+{
+	printHangmanPicture(1);
+
+
+}
+
+#else
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -7,7 +22,7 @@
 
 
 // prints out a picture of the hangman based on how many incorrect guesses have been made
-void hangmanPicture(int tries);
+void printHangmanPicture(int tries);
 
 // prints the playing letters into the console
 void printLetters(std::string game_letters);
@@ -133,7 +148,7 @@ int main() {
 
 		guessed_correctly = false;					 // reset the guessed_correctly boolean since a new iteration has began
 
-		hangmanPicture(tries);
+		printHangmanPicture(tries);
 		std::cout << "Topic of the word: " << topic << '\n';
 		printIncorrectLetters(incorrect_guesses);
 		printLetters(game_letters);
@@ -155,14 +170,14 @@ int main() {
 	
 		// checks if game has been lost
 		if (tries > 5) {							 // if player reaches more than 5 tries the game is lost
-			hangmanPicture(tries);
+			printHangmanPicture(tries);
 			std::cout << "The correct word was " << word << '\n';
 			game_lost = true;
 		}
 
 		// if game is not lost, checks if game is won
 		else if (game_letters == word) {
-			hangmanPicture(tries);
+			printHangmanPicture(tries);
 			printLetters(game_letters);
 
 			std::cout << "Congrats! You won!\n";
@@ -173,3 +188,4 @@ int main() {
 
 	return 0;
 }
+#endif // DEBUG
