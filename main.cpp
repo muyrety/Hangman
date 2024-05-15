@@ -1,8 +1,8 @@
+#include "output.h"
 #include <iostream>
 #include <string>
 #include <vector>
 #include <fstream>
-#include "io.h"
 
 // used for choosing a topic of playing or for returing "error" if it's not possible to retrieve it
 std::string topicChooser();
