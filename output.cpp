@@ -103,24 +103,16 @@ void printScore(int guessed_easy, int guessed_medium, int guessed_hard) {
 	std::cout << "You already guessed:\n";
 
 	// use "word" instead of "words" if player has only guessed one word
-	if (guessed_easy == 1)
-		std::cout << guessed_easy << " easy word\n";
+	std::cout << guessed_easy << " easy " << ((guessed_easy == 1) ? "word" : "words") << '\n';
 
-	else std::cout << guessed_easy << " easy words\n";
+	std::cout << guessed_easy << " easy " << ((guessed_medium == 1) ? "word" : "words") << '\n';
 
-	if (guessed_medium == 1)
-		std::cout << guessed_medium << " medium word\n";
-
-	else std::cout << guessed_medium << " medium words\n";
-
-	if (guessed_hard == 1)
-		std::cout << guessed_hard << " hard word\n";
-
-	else std::cout << guessed_hard << " hard words\n";
+	std::cout << guessed_easy << " easy " << ((guessed_hard == 1) ? "word" : "words") << '\n';
 }
 
 // used to display the title screen
-void titleScreen(int guessed_easy, int guessed_medium, int guessed_hard) {
+void titleScreen(int guessed_easy, int guessed_medium, int guessed_hard) 
+{
 	std::cout << "Welcome to Hangman!\n";
 	printScore(guessed_easy, guessed_medium, guessed_hard);
 	std::cout << "Select your game mode:\n"

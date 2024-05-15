@@ -1,3 +1,31 @@
+#define UNIT_TESTING
+
+#ifdef UNIT_TESTING
+#include "output.h"
+
+void testprintLetters()
+{
+	// string_view oveload
+	printLetters("hello");
+	printLetters("this is a long string");
+	printLetters("");
+
+	// vector overload
+	printLetters(std::vector<char>{'i', ' ', 'a', 'm', ' ', 'h', 'a', 'p', 'p', 'y'});
+	printLetters(std::vector<char>{'a', 'h', 'h', '9', 'c'});
+	printLetters(std::vector<char>{});
+
+}
+
+
+int main()
+{
+	testprintLetters();
+	return 0;
+}
+
+
+#else
 #include "output.h"
 #include <iostream>
 #include <string>
@@ -164,4 +192,4 @@ int main() {
 
 	return 0;
 }
-
+#endif

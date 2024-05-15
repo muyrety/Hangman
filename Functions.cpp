@@ -171,17 +171,6 @@ char getValidGuess(std::vector<char> incorrect_guesses, std::string game_letters
 	}
 }
 
-// used for writing the score to score.txt
-void writeScore(int guessed_easy, int guessed_medium, int guessed_hard) {
-	std::ofstream out_score("score.txt");
-
-	out_score << guessed_easy << '\n'
-			  << guessed_medium << '\n'
-			  << guessed_hard << '\n';
-
-	out_score.close();
-}
-
 // used for changing the players score (in case of a win)
 void changeScore(int difficulty, int& guessed_easy, int& guessed_medium, int& guessed_hard) {
 
@@ -196,42 +185,6 @@ void changeScore(int difficulty, int& guessed_easy, int& guessed_medium, int& gu
 		++guessed_hard;
 		break;
 	}
-
-	writeScore(guessed_easy, guessed_medium, guessed_hard);
-}
-
-// used for printing players score to console
-void printScore(int guessed_easy, int guessed_medium, int guessed_hard) {
-
-	std::cout << "You already guessed:\n";
-
-	// use "word" instead of "words" if player has only guessed one word
-	if (guessed_easy == 1)
-		std::cout << guessed_easy << " easy word\n";
-
-	else std::cout << guessed_easy << " easy words\n";
-
-	if (guessed_medium == 1)
-		std::cout << guessed_medium << " medium word\n";
-
-	else std::cout << guessed_medium << " medium words\n";
-
-	if (guessed_hard == 1)
-		std::cout << guessed_hard << " hard word\n";
-
-	else std::cout << guessed_hard << " hard words\n";
-}
-
-// used to display the title screen
-void titleScreen(int guessed_easy, int guessed_medium, int guessed_hard) {
-	std::cout << "Welcome to Hangman!\n";
-	printScore(guessed_easy, guessed_medium, guessed_hard);
-	std::cout << "Select your game mode:\n"
-			  << "1. Easy\n"
-			  << "2. Medium\n"
-			  << "3. Hard\n"
-			  << "4. Reset score\n"
-			  << "5. Exit\n";
 }
 
 // used to obtain a valid difficulty value from the user
