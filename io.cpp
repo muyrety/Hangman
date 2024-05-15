@@ -3,10 +3,13 @@
 #include <string_view>
 #include <cstddef>
 #include <vector>
+#include <cassert>
 
 // prints out a picture of the hangman based on how many incorrect guesses have been made
 void printHangmanPicture(int tries) 
 {
+	assert(tries >= 0 && tries <= 6);
+
 	std::cout << "===================================\n";
 	std::cout << "   _____\n";
 	std::cout << "   |   |\n";
@@ -60,8 +63,6 @@ void printHangmanPicture(int tries)
 	std::cout << "      _|_\n";
 	std::cout << "===================================\n";
 
-	if (tries == 6)
-		std::cout << "GAME OVER!\n";
 }
 
 // prints the playing letters into the console

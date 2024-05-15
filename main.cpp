@@ -1,12 +1,12 @@
-#define DEBUG
+
 
 #ifdef DEBUG
 
-#include <io.h>
+#include "io.h"
 
 int main()
 {
-	printHangmanPicture(1);
+	printHangmanPicture(6);
 
 
 }
@@ -171,6 +171,7 @@ int main() {
 		// checks if game has been lost
 		if (tries > 5) {							 // if player reaches more than 5 tries the game is lost
 			printHangmanPicture(tries);
+			std::cout << "GAME OVER!\n";
 			std::cout << "The correct word was " << word << '\n';
 			game_lost = true;
 		}
