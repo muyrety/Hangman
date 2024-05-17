@@ -22,7 +22,7 @@
     <ClCompile Include="Functions.cpp" />
     <ClCompile Include="display.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="score_managment.cpp" />
+    <ClCompile Include="score.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="hardwords.txt" />
@@ -36,7 +36,7 @@
   <ItemGroup>
     <ClInclude Include="Constants.h" />
     <ClInclude Include="display.h" />
-    <ClInclude Include="score_managment.h" />
+    <ClInclude Include="score.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

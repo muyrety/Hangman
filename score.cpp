@@ -1,4 +1,5 @@
 #include "Constants.h"
+#include "score.h"
 #include <cassert>
 #include <fstream>
 
@@ -33,7 +34,7 @@ bool readScore(int& guessed_easy, int& guessed_medium, int& guessed_hard)
 }
 
 // used for changing the players score (in case of a win)
-void changeScore(int difficulty, int& guessed_easy, 
+void incrementScore(int difficulty, int& guessed_easy, 
 	int& guessed_medium, int& guessed_hard) 
 {
 

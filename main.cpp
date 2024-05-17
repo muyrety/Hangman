@@ -89,7 +89,7 @@ bool checkGuess(char guess, std::string word);
 void writeScore(int guessed_easy, int guessed_medium, int guessed_hard);
 
 // used for changing the players score (in case of a win)
-void changeScore(int difficulty, int& guessed_easy, int& guessed_medium, int& guessed_hard);
+void incrementScore(int difficulty, int& guessed_easy, int& guessed_medium, int& guessed_hard);
 
 // used for reading the score from score.txt
 bool readScore(int& guessed_easy, int& guessed_medium, int& guessed_hard);
@@ -221,7 +221,7 @@ int main() {
 			printLetters(game_letters);
 
 			std::cout << "Congrats! You won!\n";
-			changeScore(difficulty, guessed_easy, guessed_medium, guessed_hard);
+			incrementScore(difficulty, guessed_easy, guessed_medium, guessed_hard);
 			game_won = true;
 		}
 	}
