@@ -21,7 +21,7 @@ void changeGameLetters(char guess, std::string& game_letters, std::string_view w
 {
 	assert(game_letters.size() == word.size());
 
-	for (int i{ 0 }; i < word.size(); ++i)
+	for (std::size_t i{ 0 }; i < word.size(); ++i)
 	{
 		// if guess matches with some word's letter
 		if (guess == word[i])
