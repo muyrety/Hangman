@@ -1,3 +1,9 @@
+#include <string>
+#include <fstream>
+#include <random>
+#include <vector>
+
+
 std::string topicChooser() {
 	std::ifstream topic("topics.txt");
 	if (topic.fail())

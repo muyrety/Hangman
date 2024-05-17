@@ -1,4 +1,6 @@
 #include "game.h"
+#include <cassert>
+#include <cstddef>
 #include <string>
 #include <string_view>
 #include <vector>
@@ -17,10 +19,12 @@ bool checkGuess(char guess, std::string_view word)
 // used to change game_letters to the players guess
 void changeGameLetters(char guess, std::string& game_letters, std::string_view word) 
 {
-	for (auto i : word) 
+	assert(game_letters.size() == word.size());
+
+	for (int i{ 0 }; i < word.size(); ++i)
 	{
 		// if guess matches with some word's letter
-		if (guess == i)
+		if (guess == word[i])
 			game_letters[i] = guess;	// change the character of game_letters in that spot to guess
 	}
 }

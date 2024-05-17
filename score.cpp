@@ -1,4 +1,3 @@
-#include "Constants.h"
 #include "score.h"
 #include <cassert>
 #include <fstream>
@@ -8,7 +7,7 @@ void writeScore(int guessed_easy, int guessed_medium, int guessed_hard)
 {
 	assert(guessed_easy >= 0 && guessed_medium >= 0 && guessed_hard >= 0);
 
-	std::ofstream out_score(FileNames::score_file);
+	std::ofstream out_score("score.txt");
 
 	out_score << guessed_easy << '\n';
 	out_score << guessed_medium << '\n';

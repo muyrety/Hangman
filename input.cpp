@@ -1,3 +1,8 @@
+#include "game.h"
+#include <vector>
+#include <iostream>
+
+
 // used for obtaining a valid guess from the user (only 1 character - a letter, not previously guessed)
 char getValidGuess(std::vector<char> incorrect_guesses, std::string game_letters) {
 
