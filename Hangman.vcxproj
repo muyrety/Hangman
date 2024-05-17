@@ -19,12 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Functions.cpp" />
     <ClCompile Include="display.cpp" />
+    <ClCompile Include="game.cpp" />
+    <ClCompile Include="input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="score.cpp" />
+    <ClCompile Include="word_choosing.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="easywords.txt" />
     <Text Include="hardwords.txt" />
     <Text Include="mediumwords.txt" />
     <Text Include="score.txt" />
@@ -34,8 +37,10 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Constants.h" />
     <ClInclude Include="display.h" />
+    <ClInclude Include="game.h" />
+    <ClInclude Include="input.h" />
+    <ClInclude Include="word_choosing.h" />
     <ClInclude Include="score.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

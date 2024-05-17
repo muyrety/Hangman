@@ -1,8 +1,5 @@
-#include "Constants.h"
-#include "output.h"
+#include "display.h"
 #include <cassert>
-#include <cstddef>
-#include <fstream>
 #include <iostream>
 #include <string_view>
 #include <vector>
@@ -108,11 +105,13 @@ void titleScreen(int guessed_easy, int guessed_medium, int guessed_hard)
 	assert(guessed_easy >= 0 && guessed_medium >= 0 && guessed_hard >= 0);
 
 	std::cout << "Welcome to Hangman!\n";
+
 	printScore(guessed_easy, guessed_medium, guessed_hard);
-	std::cout << "Select your game mode:\n"
-		<< "1. Easy\n"
-		<< "2. Medium\n"
-		<< "3. Hard\n"
-		<< "4. Reset score\n"
-		<< "5. Exit\n";
+
+	std::cout << "Select your game mode:\n";
+	std::cout << "1. Easy\n";
+	std::cout << "2. Medium\n";
+	std::cout << "3. Hard\n";
+	std::cout << "4. Reset score\n";
+	std::cout << "5. Exit\n";
 }

@@ -1,65 +1,14 @@
 #define UNIT_TESTING
 
 #ifdef UNIT_TESTING
-#include "display.h"
 
-void testprintLetters()
-{
-	// string_view oveload
-	printLetters("hello");
-	printLetters("this is a long string");
-	printLetters("");
+#include "game.h"
 
-	// vector overload
-	printLetters(std::vector<char>{'i', ' ', 'a', 'm', ' ', 'h', 'a', 'p', 'p', 'y'});
-	printLetters(std::vector<char>{'a', 'h', 'h', '9', 'c'});
-	printLetters(std::vector<char>{});
-
-}
-
-void testprintHangmanPicture()
-{
-	//printHangmanPicture(-1);
-	printHangmanPicture(0);
-	printHangmanPicture(1);
-	printHangmanPicture(2);
-	printHangmanPicture(3);
-	printHangmanPicture(4);
-	printHangmanPicture(5);
-	printHangmanPicture(6);
-	//printHangmanPicture(7);
-	//printHangmanPicture(-111);
-	//printHangmanPicture(500);
-}
-
-void testprintScore()
-{
-	printScore(1, 1, 1);
-	printScore(1, 2, 2);
-	printScore(5, 5, 5);
-	printScore(0, 0, 0);
-	printScore(500, 16, 567);
-	//printScore(-1, 7, 5);
-
-}
-
-void testtitleScreen()
-{
-	titleScreen(5, 2, 5);
-	//titleScreen(-1, 5, 6);
-	titleScreen(8989, 635, 54);
-}
-
-void testwriteScore()
-{
-	writeScore(1, 256, 65);
-}
 int main()
 {
-	testwriteScore();
+	
 	return 0;
 }
-
 
 #else
 #include "output.h"
