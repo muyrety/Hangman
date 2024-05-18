@@ -1,5 +1,3 @@
-#define UNIT_TESTING
-
 #ifdef UNIT_TESTING
 
 #include "game.h"
@@ -103,55 +101,26 @@ int main()
 }
 
 #else
-#include "output.h"
+#include "display.h"
+#include "game.h"
+#include "input.h"
+#include "score.h"
+#include "word_choosing.h"
 #include <iostream>
 #include <string>
 #include <vector>
-#include <fstream>
 
-// used for choosing a topic of playing or for returing "error" if it's not possible to retrieve it
-std::string topicChooser();
-
-// used for selecing a random word from a .txt file based on difficulty
-// and for returning an error, would there be any problems while choosing the word
-std::string wordChooser(int difficulty, std::string topic);
-
-// used to obtain a valid difficulty value from the user
-int getDifficulty();
-
-// used for obtaining a valid guess from the user (only 1 character - a letter, not previously guessed)
-// converts uppercase guesses to lowercase
-char getValidGuess(std::vector<char> incorrect_guesses, std::string game_letters);
-
-// used to check if the players guess is valid
-bool checkGuess(char guess, std::string word);
-
-// used for writing the score to score.txt
-void writeScore(int guessed_easy, int guessed_medium, int guessed_hard);
-
-// used for changing the players score (in case of a win)
-void incrementScore(int difficulty, int& guessed_easy, int& guessed_medium, int& guessed_hard);
-
-// used for reading the score from score.txt
-bool readScore(int& guessed_easy, int& guessed_medium, int& guessed_hard);
-
-// used to display the title screen
-void titleScreen(int guessed_easy, int guessed_medium, int guessed_hard);
-
-// used to change game_letters to the players guess
-void changeGameLetters(char guess, std::string& game_letters, std::string word);
-
-
-int main() {
+int main() 
+{
 
 	// stores how many words did the player guess previously (the score)
-	int guessed_easy{ };
-	int guessed_medium{ };
-	int guessed_hard{ };
+	int guessed_easy{};
+	int guessed_medium{};
+	int guessed_hard{};
 
 	// if readScore() returned false (score retrieval unsuccessful) send out an error message
-	// note - this changes the score values since they are passed by reference
-	if ( !readScore(guessed_easy, guessed_medium, guessed_hard) ) {
+	if ( !readScore(guessed_easy, guessed_medium, guessed_hard) ) 
+	{
 		std::cerr << "Error opening the score file!\n";
 		return 1;
 	}
@@ -162,7 +131,8 @@ int main() {
 	int difficulty{ getDifficulty() };
 
 	// if player selects "Reset score"
-	while (difficulty == 4) {
+	while (difficulty == 4) 
+	{
 		guessed_easy = 0;										// score values are set to 0
 		guessed_medium = 0;
 		guessed_hard = 0;
@@ -175,15 +145,16 @@ int main() {
 		difficulty = getDifficulty();							// asks for a new difficulty value
 	}
 
-	// if player selects "Exit", program is terminated with an early return statement
+	// if player selects "Exit", program is terminated
 	if (difficulty == 5)
 		return 0;
 
 	// stores a randomly selected topic by topicChooser()
 	std::string topic{ topicChooser() };
 
-	// if topicChooser() returns "error", it means the topic file could'nt be accessed
-	if (topic == "error") {
+	// if topicChooser() returns "error", it means the topic file couldn't be accessed
+	if (topic == "error") 
+	{
 		std::cerr << "There has been an error while retrieving the topics\n";
 		return 1;
 	}
@@ -193,13 +164,15 @@ int main() {
 
 	// if wordChooser() returns "error1" that means there has been an error while opening the chosen difficulties
 	// words file
-	if (word == "error1") {
+	if (word == "error1") 
+	{
 		std::cerr << "There has been an error obtaining words!\n";
 		return 1;
 	}
 
-	// if wordChooser() returns "error2" that means that the program could'nt find the topic in the selected words file
-	if (word == "error2") {
+	// if wordChooser() returns "error2" that means that the program couldn't find the topic in the selected words file
+	if (word == "error2") 
+	{
 		std::cerr << "Topic not found in the word file!\n";
 		return 1;
 	}
@@ -213,19 +186,16 @@ int main() {
 
 	int tries{ 0 };
 
-	// players guess for a single iteration
-	char guess{ };
-
-	// determines whether the player guessed correctly for the iteration
-	bool guessed_correctly{ };
-
 	bool game_won{ false };
 	bool game_lost{ false };
 
-	// main playing function
-	while (!game_lost && !game_won) {
+	constexpr int max_tries{ 6 };
 
-		guessed_correctly = false;					 // reset the guessed_correctly boolean since a new iteration has began
+	// main playing function
+	while (!game_lost && !game_won) 
+	{
+
+		bool guessed_correctly{ false };		// reset the guessed_correctly boolean since a new iteration has began
 
 		printHangmanPicture(tries);
 		std::cout << "Topic of the word: " << topic << '\n';
@@ -234,22 +204,26 @@ int main() {
 		printLetters(game_letters);
 
 
-		guess = getValidGuess(incorrect_guesses, game_letters);
+		char guess{ getValidGuess(incorrect_guesses, game_letters) };
 
 		guessed_correctly = checkGuess(guess, word);
 		
-		if (guessed_correctly) {
+		if (guessed_correctly) 
+		{
 			std::cout << "Correct!\n";
 			changeGameLetters(guess, game_letters, word);
 		}
-		else {
+
+		else
+		{
 			std::cout << "You guessed incorrectly\n";
 			incorrect_guesses.push_back(guess);
 			++tries;
 		}
 	
 		// checks if game has been lost
-		if (tries > 5) {							 // if player reaches more than 5 tries the game is lost
+		if (tries >= max_tries) 
+		{							 
 			printHangmanPicture(tries);
 			std::cout << "GAME OVER!\n";
 			std::cout << "The correct word was " << word << '\n';
@@ -257,12 +231,13 @@ int main() {
 		}
 
 		// if game is not lost, checks if game is won
-		else if (game_letters == word) {
+		else if (game_letters == word) 
+		{
 			printHangmanPicture(tries);
 			printLetters(game_letters);
-
 			std::cout << "Congrats! You won!\n";
 			incrementScore(difficulty, guessed_easy, guessed_medium, guessed_hard);
+			writeScore(guessed_easy, guessed_medium, guessed_hard);
 			game_won = true;
 		}
 	}
