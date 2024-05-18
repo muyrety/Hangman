@@ -1,47 +1,63 @@
 #include "game.h"
-#include <vector>
+#include <cctype>
+#include <cstdlib>
 #include <iostream>
+#include <limits>
+#include <string_view>
+#include <vector>
 
+static void ignoreLine()
+{
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
 
 // used for obtaining a valid guess from the user (only 1 character - a letter, not previously guessed)
-char getValidGuess(std::vector<char> incorrect_guesses, std::string game_letters) {
+char getValidGuess(const std::vector<char>& incorrect_guesses, std::string_view game_letters) 
+{
 
-	char guess{};
-	// request an input
-	std::cout << "Enter a letter\n";
-	std::cin >> guess;
+	while(true)
+	{
+		std::cout << "Enter a letter: ";
+		char guess{};
+		std::cin >> guess;
 
-	while (true) {
+		if (!std::cin)
+		{
+			if (std::cin.eof())
+				std::exit(0);
 
-		// if player guessed more than one character (next character in the input buffer isn't \n)
-		if (std::cin.peek() != '\n') {
-			std::cout << "You can only guess 1 character at a time! Try again.\n";
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');	// 1. clear the input buffer
-			std::cin >> guess;													// 2. get a new guess
-			continue;															// 3. check if the new guess is valid
+			std::cin.clear();
+			ignoreLine();
+			std::cout << "Invalid input! Try again.\n";
+			continue;
+		}
+
+		if (std::cin.peek() != '\n')
+		{
+			ignoreLine();
+			std::cout << "You must only enter one value! Try again.\n";
+			continue;
 		}
 
 		// if player didn't guess a letter
-		if (!std::isalpha(guess)) {
+		if (!std::isalpha(guess)) 
+		{
 			std::cout << "You must input a letter! Try again.\n";
-			std::cin >> guess;													// 1. get a new guess
-			continue;															// 2. check if the new guess is valid
+			continue;												// ask for a new value
 		}
 
-		// if player guessed an uppercase letter, convert it to lowercase (this is only reached if player
-		// guessed only a single character and it is a letter)
+		// if player guessed an uppercase letter, convert it to lowercase
 		if (std::isupper(guess))
 			guess = static_cast<char>(std::tolower(guess));
 
 		// if players guess was guessed before
-		if (previouslyGuessed(guess, game_letters, incorrect_guesses)) {
+		if (previouslyGuessed(guess, game_letters, incorrect_guesses)) 
+		{
 			std::cout << "You already guessed this letter! Try again.\n";
-			std::cin >> guess;													// 1. get a new guess
-			continue;															// 2. check if the new guess is valid
+			continue;												// ask for a new value
 		}
 
-		// if it reaches here, guess must be valid (player guessed only one character
-		// that is a letter, not previously guessed)
+		// if it reaches here, guess must be valid
 		return guess;
 	}
 }
