@@ -33,11 +33,11 @@ bool readScore(int& guessed_easy, int& guessed_medium, int& guessed_hard)
 }
 
 // used for changing the players score (in case of a win)
-void incrementScore(int difficulty, int& guessed_easy, 
+void incrementScore(int game_mode, int& guessed_easy, 
 	int& guessed_medium, int& guessed_hard) 
 {
 
-	switch (difficulty) {
+	switch (game_mode) {
 	case 1:
 		++guessed_easy;
 		break;

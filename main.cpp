@@ -128,11 +128,11 @@ int main()
 
 	titleScreen(guessed_easy, guessed_medium, guessed_hard);
 
-	// used for storing the difficulty player wants to play on
-	int difficulty{ getDifficulty() };
+	// used for storing the game_mode player wants to play on
+	int game_mode{ getGameMode() };
 
 	// if player selects "Reset score"
-	while (difficulty == 4) 
+	while (game_mode == 4) 
 	{
 		guessed_easy = 0;										// score values are set to 0
 		guessed_medium = 0;
@@ -143,11 +143,11 @@ int main()
 		std::cout << "Score has been reset!\n";
 
 		titleScreen(guessed_easy, guessed_medium, guessed_hard);
-		difficulty = getDifficulty();							// asks for a new difficulty value
+		game_mode = getGameMode();							// asks for a new game_mode value
 	}
 
 	// if player selects "Exit", program is terminated
-	if (difficulty == 5)
+	if (game_mode == 5)
 		return 0;
 
 	// stores a randomly selected topic by topicChooser()
@@ -161,7 +161,7 @@ int main()
 	}
 
 	// Word player is trying to guess. Is initialized with a random word from wordChooser().
-	std::string word{ wordChooser(difficulty, topic) };
+	std::string word{ wordChooser(game_mode, topic) };
 
 	// if wordChooser() returns "error1" that means there has been an error while opening the chosen difficulties
 	// words file
@@ -237,7 +237,7 @@ int main()
 			printHangmanPicture(tries);
 			printLetters(game_letters);
 			std::cout << "Congrats! You won!\n";
-			incrementScore(difficulty, guessed_easy, guessed_medium, guessed_hard);
+			incrementScore(game_mode, guessed_easy, guessed_medium, guessed_hard);
 			writeScore(guessed_easy, guessed_medium, guessed_hard);
 			game_won = true;
 		}

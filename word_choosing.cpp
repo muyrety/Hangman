@@ -30,22 +30,22 @@ std::string topicChooser() {
 	return topics[topics_index(random_number)];
 }
 
-// used for selecing a random word from a .txt file based on difficulty and topic
+// used for selecing a random word from a .txt file based on game_mode and topic
 // Error codes:
 // error1 - can't access the word file
 // error2 - can't find the chosen topic in the word file
-std::string wordChooser(int difficulty, std::string topic) {
+std::string wordChooser(int game_mode, std::string topic) {
 
 	// garbage value used for placing the cursor on the chosen topics words
 	// and then for filling up the words vector
 	std::string foo{ };
 
-	// used for holding all the words of the player selected difficulty, of the chosen topic
+	// used for holding all the words of the player selected game_mode, of the chosen topic
 	std::vector <std::string> words{ };
 
 	// curly braces in each case to specify that these word ifstreams
 	// only need to be available in the selected cases scope
-	switch (difficulty) {
+	switch (game_mode) {
 	case 1:
 	{
 		std::ifstream easy("easywords.txt");

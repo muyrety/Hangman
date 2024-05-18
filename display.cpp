@@ -98,7 +98,6 @@ void titleScreen(int guessed_easy, int guessed_medium, int guessed_hard)
 
 	printScore(guessed_easy, guessed_medium, guessed_hard);
 
-	std::cout << "Select your game mode:\n";
 	std::cout << "1. Easy\n";
 	std::cout << "2. Medium\n";
 	std::cout << "3. Hard\n";
