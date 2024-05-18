@@ -19,49 +19,41 @@ void printHangmanPicture(int tries)
 		std::cout << "       |\n";
 		std::cout << "       |\n";
 		std::cout << "       |\n";
-
 		break;
 	case 1:
 		std::cout << "   0   |\n";
 		std::cout << "       |\n";
 		std::cout << "       |\n";
-
 		break;
 	case 2:
 		std::cout << "   0   |\n";
 		std::cout << "   |   |\n";
 		std::cout << "       |\n";
-
 		break;
 	case 3:
 		std::cout << "   0   |\n";
 		std::cout << "  /|   |\n";
 		std::cout << "       |\n";
-
 		break;
 	case 4:
 		std::cout << "   0   |\n";
 		std::cout << "  /|\\  |\n";
 		std::cout << "       |\n";
-
 		break;
 	case 5:
 		std::cout << "   0   |\n";
 		std::cout << "  /|\\  |\n";
 		std::cout << "  /    |\n";
-
 		break;
 	case 6:
 		std::cout << "   0   |\n";
 		std::cout << "  /|\\  |\n";
 		std::cout << "  / \\  |\n";
-
 		break;
 	}
 
 	std::cout << "      _|_\n";
 	std::cout << "===================================\n";
-
 }
 
 // prints letters into the console with spaces in between
@@ -87,7 +79,6 @@ void printLetters(const std::vector <char>& letters)
 // used for printing players score to console
 void printScore(int guessed_easy, int guessed_medium, int guessed_hard) 
 {
-
 	assert(guessed_easy >= 0 && guessed_medium >= 0 && guessed_hard >= 0);
 
 	std::cout << "You already guessed:\n";
@@ -103,8 +94,6 @@ void printScore(int guessed_easy, int guessed_medium, int guessed_hard)
 // used to display the title screen
 void titleScreen(int guessed_easy, int guessed_medium, int guessed_hard) 
 {
-	assert(guessed_easy >= 0 && guessed_medium >= 0 && guessed_hard >= 0);
-
 	std::cout << "Welcome to Hangman!\n";
 
 	printScore(guessed_easy, guessed_medium, guessed_hard);

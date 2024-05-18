@@ -1,3 +1,4 @@
+#define UNIT_TESTING
 #ifdef UNIT_TESTING
 
 #include "game.h"
@@ -204,7 +205,7 @@ int main()
 		printLetters(game_letters);
 
 
-		char guess{ getValidGuess(incorrect_guesses, game_letters) };
+		char guess{ getGuess(incorrect_guesses, game_letters) };
 
 		guessed_correctly = checkGuess(guess, word);
 		
