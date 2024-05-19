@@ -1,6 +1,7 @@
 #define UNIT_TESTING
 #ifdef UNIT_TESTING
 
+#include "input.h"
 #include "game.h"
 #include <cassert>
 #include <cstdlib>
@@ -22,6 +23,7 @@ void testcheckGuess()
 	assert(checkGuess('e', "eel"));
 	assert(!checkGuess(' ', "cat"));
 	assert(!checkGuess('j', ""));
+	assert(checkGuess('h', "h6"));
 	assert(!checkGuess('7', "654"));
 }
 
@@ -87,6 +89,28 @@ void testpreviouslyGuessed()
 	assert(!previouslyGuessed('y', "   ", test5));
 
 }
+
+void testgetGuess()
+{
+	constexpr char exitValue{ 'p' };
+	std::vector<char> test{ 'h', 'j', 'a', '5', '7' , '\n'};
+	char guess{};
+	do
+	{
+		guess = getGuess(test, " e1z");
+	} while (guess != exitValue);
+}
+
+void testgetGameMode()
+{
+	constexpr int exitValue{ 5 };
+	int gameMode{};
+	do
+	{
+		gameMode = getGameMode();
+	} while (gameMode != exitValue);
+}
+
 int main()
 {
 	testcheckGuess();
@@ -97,6 +121,12 @@ int main()
 
 	testpreviouslyGuessed();
 	std::cout << "testpreviouslyGuessed() -- all tests passed\n";
+
+	testgetGuess();
+	std::cout << "testgetGuess() -- all tests passed\n";
+
+	testgetGameMode();
+	std::cout << "testgetGameMode() -- all tests passed\n";
 
 	return 0;
 }
