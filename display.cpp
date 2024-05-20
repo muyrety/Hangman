@@ -79,8 +79,6 @@ void printLetters(const std::vector <char>& letters)
 // used for printing players score to console
 void printScore(int guessed_easy, int guessed_medium, int guessed_hard) 
 {
-	assert(guessed_easy >= 0 && guessed_medium >= 0 && guessed_hard >= 0);
-
 	std::cout << "You already guessed:\n";
 
 	// use "word" instead of "words" if player has only guessed one word
