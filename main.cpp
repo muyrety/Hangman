@@ -1,4 +1,4 @@
-// #define UNIT_TESTING
+#define UNIT_TESTING
 #ifdef UNIT_TESTING
 
 #include "unit_tests.h"
@@ -15,11 +15,14 @@ int main()
 	testpreviouslyGuessed();
 	std::cout << "testpreviouslyGuessed() -- all tests passed\n";
 
-	testgetGuess();
-	std::cout << "testgetGuess() -- all tests passed\n";
+	// testgetGuess();
+	// std::cout << "testgetGuess() -- all tests passed\n";
 
-	testgetGameMode();
-	std::cout << "testgetGameMode() -- all tests passed\n";
+	// testgetGameMode();
+	// std::cout << "testgetGameMode() -- all tests passed\n";
+
+	testincrementScore();
+	std::cout << "testincrementScore() -- all tests passed\n";
 
 	return 0;
 }

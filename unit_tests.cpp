@@ -1,5 +1,6 @@
 #include "unit_tests.h"
 #include "game.h"
+#include "score.h"
 #include "input.h"
 #include <cassert>
 #include <string>
@@ -105,4 +106,29 @@ void testgetGameMode()
 	{
 		gameMode = getGameMode();
 	} while (gameMode != exitValue);
+}
+
+void testincrementScore()
+{
+	int guessed_easy1{ 8 };
+	int guessed_medium1{ 7 };
+	int guessed_hard1{ 99 };
+	incrementScore(2, guessed_easy1, guessed_medium1, guessed_hard1);
+	assert(guessed_medium1 == 8);
+
+	int guessed_easy2{ -8 };
+	int guessed_medium2{ 48 };
+	int guessed_hard2{ -771 };
+	incrementScore(1, guessed_easy2, guessed_medium2, guessed_hard2);
+	assert(guessed_easy2 == -7);
+
+	int guessed_easy3{ 8 };
+	int guessed_medium3{ 7 };
+	int guessed_hard3{ 99 };
+	incrementScore(3, guessed_easy3, guessed_medium3, guessed_hard3);
+	assert(guessed_hard3 == 100);
+
+	// Fail cases:
+	// incrementScore(4, guessed_easy1, guessed_medium1, guessed_hard1);
+	// incrementScore(0, guessed_easy1, guessed_medium1, guessed_hard1);
 }

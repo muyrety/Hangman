@@ -11,4 +11,6 @@ void testgetGuess();
 
 void testgetGameMode();
 
+void testincrementScore();
+
 #endif
