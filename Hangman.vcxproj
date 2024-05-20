@@ -24,6 +24,7 @@
     <ClCompile Include="input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="score.cpp" />
+    <ClCompile Include="unit_tests.cpp" />
     <ClCompile Include="word_choosing.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -37,9 +38,11 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="constants.h" />
     <ClInclude Include="display.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="input.h" />
+    <ClInclude Include="unit_tests.h" />
     <ClInclude Include="word_choosing.h" />
     <ClInclude Include="score.h" />
   </ItemGroup>

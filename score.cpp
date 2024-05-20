@@ -1,4 +1,5 @@
 #include "score.h"
+#include "constants.h"
 #include <cassert>
 #include <fstream>
 
@@ -7,6 +8,8 @@ constexpr auto score_file{ "score.txt" };
 // used for writing the score to a file
 void writeScore(int guessed_easy, int guessed_medium, int guessed_hard)
 {
+	assert(guessed_easy >= 0 && guessed_medium >= 0 && guessed_hard >= 0);
+
 	std::ofstream out_score(score_file);
 
 	out_score << guessed_easy << '\n';
@@ -16,21 +19,23 @@ void writeScore(int guessed_easy, int guessed_medium, int guessed_hard)
 	out_score.close();
 }
 
-bool readScore(int& guessed_easy, int& guessed_medium, int& guessed_hard) 
+int readScore(int& guessed_easy, int& guessed_medium, int& guessed_hard) 
 {
 	std::ifstream score(score_file);
 
 	if (!score)
-		return false;
+		return error_code::score_fail;
 
 	score >> guessed_easy;
 	score >> guessed_medium;
 	score >> guessed_hard;
 
-	assert(guessed_easy >= 0 && guessed_medium >= 0 && guessed_hard >= 0);
+	if (guessed_easy < 0 || guessed_medium < 0 || guessed_hard < 0)
+		return error_code::negative_score;
 
 	score.close();
-	return true;
+
+	return error_code::score_success;
 }
 
 // used for changing the players score (in case of a win)
