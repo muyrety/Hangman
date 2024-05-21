@@ -13,4 +13,8 @@ void testgetGameMode();
 
 void testincrementScore();
 
+void testwriteScore();
+
+void testreadScore();
+
 #endif

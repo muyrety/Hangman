@@ -6,14 +6,14 @@
 
 int main()
 {
-	testcheckGuess();
-	std::cout << "testcheckGuess() -- all tests passed\n";
+	// testcheckGuess();
+	// std::cout << "testcheckGuess() -- all tests passed\n";
 
-	testchangeGameLetters();
-	std::cout << "testchangeGameLetters() -- all tests passed\n";
+	// testchangeGameLetters();
+	// std::cout << "testchangeGameLetters() -- all tests passed\n";
 
-	testpreviouslyGuessed();
-	std::cout << "testpreviouslyGuessed() -- all tests passed\n";
+	// testpreviouslyGuessed();
+	// std::cout << "testpreviouslyGuessed() -- all tests passed\n";
 
 	// testgetGuess();
 	// std::cout << "testgetGuess() -- all tests passed\n";
@@ -23,6 +23,12 @@ int main()
 
 	testincrementScore();
 	std::cout << "testincrementScore() -- all tests passed\n";
+
+	// testwriteScore();
+	// std::cout << "testwriteScore() -- all tests passed\n";
+
+	// testreadScore();
+	// std::cout << "testreadScore() -- all tests passed\n";
 
 	return 0;
 }

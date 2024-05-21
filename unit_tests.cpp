@@ -1,9 +1,13 @@
 #include "unit_tests.h"
+#include "constants.h"
 #include "game.h"
 #include "score.h"
 #include "input.h"
 #include <cassert>
+#include <chrono>
+#include <iostream>
 #include <string>
+#include <thread>
 #include <vector>
 
 void testcheckGuess()
@@ -121,14 +125,78 @@ void testincrementScore()
 	int guessed_hard2{ -771 };
 	incrementScore(1, guessed_easy2, guessed_medium2, guessed_hard2);
 	assert(guessed_easy2 == -7);
-
+	
 	int guessed_easy3{ 8 };
 	int guessed_medium3{ 7 };
 	int guessed_hard3{ 99 };
 	incrementScore(3, guessed_easy3, guessed_medium3, guessed_hard3);
 	assert(guessed_hard3 == 100);
 
+	int guessed_easy4{ 0 };
+	int guessed_medium4{ 0 };
+	int guessed_hard4{ 0 };
+	incrementScore(3, guessed_easy4, guessed_medium4, guessed_hard4);
+	assert(guessed_hard4 == 1);
 	// Fail cases:
 	// incrementScore(4, guessed_easy1, guessed_medium1, guessed_hard1);
 	// incrementScore(0, guessed_easy1, guessed_medium1, guessed_hard1);
+}
+
+void testwriteScore()
+{
+	using namespace std::chrono_literals;
+	// Fail cases:
+	// writeScore(-1, 2, 3);
+	// writeScore(2, -4, 1);
+	// writeScore(-1, -2, -7);
+	// writeScore(1000000000, 9999999999999999, 9999999911174);
+	// std::this_thread::sleep_for(10s);
+
+	writeScore(1, 2, 3);
+	std::this_thread::sleep_for(10s);
+
+	writeScore(79, 51, 2);
+}
+
+void testreadScore()
+{
+
+	
+	using namespace std::chrono_literals;
+	
+	int test1{};
+	int test2{};
+	int test3{};
+
+	
+	std::cout << "0% done\n";
+	std::cout << "10s till first check\n";
+	std::this_thread::sleep_for(10s);
+
+	assert(readScore(test1, test2, test3) == error_code::score_success);
+	assert(test1 == 79 && test2 == 51 && test3 == 2);
+
+	std::cout << "25% done\n";
+	std::cout << "10s till second check\n";
+	std::this_thread::sleep_for(10s);
+
+	assert(readScore(test1, test2, test3) == error_code::negative_score);
+	assert(test1 == -1 && test2 == -2 && test3 == 2);
+
+	std::cout << "50% done\n";
+	std::cout << "10s till third check\n";
+	std::this_thread::sleep_for(10s);
+
+	assert(readScore(test1, test2, test3) == error_code::score_success);
+	assert(test1 == 0 && test2 == 0 && test3 == 0);
+
+	std::cout << "75% done\n";
+	std::cout << "10s till fourth check\n";
+	std::this_thread::sleep_for(10s);
+
+	assert(readScore(test1, test2, test3) == error_code::score_fail);
+	assert(test1 == 0 && test2 == 0 && test3 == 0);
+
+	std::cout << "100% done\n";
+	
 }

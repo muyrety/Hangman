@@ -36,7 +36,7 @@ char getGuess(const std::vector<char>& incorrect_guesses, std::string_view game_
 		char guess{};
 		std::cin >> guess;
 
-		if (extractionFailed())	// if extraction failed
+		if (extractionFailed())	
 		{
 			std::cout << "Invalid input! Try again.\n";
 			continue;
@@ -80,7 +80,7 @@ int getGameMode()
 		int game_mode{};
 		std::cin >> game_mode;
 
-		if (extractionFailed())	// if extraction failed
+		if (extractionFailed())
 		{
 			std::cout << "Invalid input! Try again.\n";
 			continue;
