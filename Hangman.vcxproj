@@ -42,6 +42,7 @@
     <ClInclude Include="display.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="input.h" />
+    <ClInclude Include="random.h" />
     <ClInclude Include="unit_tests.h" />
     <ClInclude Include="word_choosing.h" />
     <ClInclude Include="score.h" />

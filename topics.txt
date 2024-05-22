@@ -1,5 +1,3 @@
-animals
-food
-fruits
-music
-sports
+adas
+asdds
+ddd

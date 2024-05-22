@@ -1,33 +1,34 @@
+#include "constants.h"
+#include "random.h"
 #include <string>
 #include <fstream>
 #include <random>
 #include <vector>
 
+std::string topicChooser() 
+{
+	constexpr auto topic_file{ "topics.txt" };
 
-std::string topicChooser() {
-	std::ifstream topic("topics.txt");
-	if (topic.fail())
-		return "error";
+	std::ifstream topic(topic_file);
 
+	if (!topic)
+		return error_code::topic_fail;
+		
 	// vector holding all the topics in the file
 	std::vector<std::string> topics{};
-
+	
 	// garbage variable used for filling up topics vector
-	std::string foo{};
+	std::string temp{};
 
 	// puts strings in topics as long as there are strings to be read from topics.txt
-	while (topic >> foo)
-		topics.push_back(foo);
+	while (topic >> temp)
+		topics.push_back(temp);
 
-	// initialize a marsenne twister PRNG with a seed from std::random_device
-	std::mt19937 random_number{ std::random_device{}() };
-
-	// initialize an uniform_int_distribution of type size_t. Minimum value - 0.
-	// Maximum value - the index of the last element in the topics vector.
-	std::uniform_int_distribution<size_t> topics_index{ 0, topics.size() - 1 };
+	if (topics.size() == 0)
+		return error_code::topic_fail;
 
 	// topic is a randomly chosen element from the topics vector
-	return topics[topics_index(random_number)];
+	return topics[Random::get<size_t>(0, topics.size() - 1)];
 }
 
 // used for selecing a random word from a .txt file based on game_mode and topic

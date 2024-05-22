@@ -2,6 +2,7 @@
 #ifdef UNIT_TESTING
 
 #include "unit_tests.h"
+#include "word_choosing.h"
 #include <iostream>
 
 int main()
@@ -21,14 +22,16 @@ int main()
 	// testgetGameMode();
 	// std::cout << "testgetGameMode() -- all tests passed\n";
 
-	testincrementScore();
-	std::cout << "testincrementScore() -- all tests passed\n";
+	// testincrementScore();
+	// std::cout << "testincrementScore() -- all tests passed\n";
 
 	// testwriteScore();
 	// std::cout << "testwriteScore() -- all tests passed\n";
 
 	// testreadScore();
 	// std::cout << "testreadScore() -- all tests passed\n";
+
+	std::cout << topicChooser();
 
 	return 0;
 }
