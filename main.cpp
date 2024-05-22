@@ -31,7 +31,8 @@ int main()
 	// testreadScore();
 	// std::cout << "testreadScore() -- all tests passed\n";
 
-	std::cout << topicChooser();
+	testtopicChooser();
+	std::cout << "testtopicChooser() -- all tests passed\n";
 
 	return 0;
 }

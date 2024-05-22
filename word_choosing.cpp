@@ -1,5 +1,6 @@
 #include "constants.h"
 #include "random.h"
+#include <cstddef>
 #include <string>
 #include <fstream>
 #include <random>
@@ -11,6 +12,7 @@ std::string topicChooser()
 
 	std::ifstream topic(topic_file);
 
+	// if file can't be opened
 	if (!topic)
 		return error_code::topic_fail;
 		
@@ -24,39 +26,41 @@ std::string topicChooser()
 	while (topic >> temp)
 		topics.push_back(temp);
 
-	if (topics.size() == 0)
+	if (topics.size() == 0)		// if no topics could be read into the file
 		return error_code::topic_fail;
 
 	// topic is a randomly chosen element from the topics vector
 	return topics[Random::get<size_t>(0, topics.size() - 1)];
 }
 
-// used for selecing a random word from a .txt file based on game_mode and topic
-// Error codes:
-// error1 - can't access the word file
-// error2 - can't find the chosen topic in the word file
-std::string wordChooser(int game_mode, std::string topic) {
+// used for selecing a random word based on game_mode and topic
+std::string wordChooser(int game_mode, std::string topic) 
+{
+	constexpr auto easy_word_file{ "easywords.txt" };
+	constexpr auto medium_word_file{ "mediumwords.txt" };
+	constexpr auto hard_word_file{ "hardwords.txt" };
 
 	// garbage value used for placing the cursor on the chosen topics words
 	// and then for filling up the words vector
-	std::string foo{ };
+	std::string foo{};
 
 	// used for holding all the words of the player selected game_mode, of the chosen topic
-	std::vector <std::string> words{ };
+	std::vector <std::string> words{};
 
 	// curly braces in each case to specify that these word ifstreams
 	// only need to be available in the selected cases scope
-	switch (game_mode) {
+	switch (game_mode) 
+	{
 	case 1:
 	{
-		std::ifstream easy("easywords.txt");
+		std::ifstream easy(easy_word_file);
 
-		if (easy.fail()) {
+		if (!easy) 
 			return "error1";
-		}
-
+		
 		// used for reading the file until selected topic is reached
-		do {
+		do 
+		{
 			easy >> foo;
 			if (foo == "endoffile")	// if end of file is reached without reaching topic first, topic is not in the file
 				return "error2";
@@ -123,13 +127,6 @@ std::string wordChooser(int game_mode, std::string topic) {
 	break;
 	}
 
-	// initialize a marsenne twister PRNG with the seed from random_device()
-	std::mt19937 random_number{ std::random_device{}() };
-
-	// initialize an uniform_int_distribution of type size_t. Minimum value - 0.
-	// Maximum value - the index of the last element in the words vector.
-	std::uniform_int_distribution<size_t> word_index{ 0, words.size() - 1 };
-
 	// the selected word is a randomly chosen element from the words vector
-	return words[word_index(random_number)];
+	return words[Random::get<std::size_t>(0, words.size() - 1)];
 }

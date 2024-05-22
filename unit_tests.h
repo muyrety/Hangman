@@ -17,4 +17,6 @@ void testwriteScore();
 
 void testreadScore();
 
+void testtopicChooser();
+
 #endif

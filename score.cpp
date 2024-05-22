@@ -5,7 +5,6 @@
 
 constexpr auto score_file{ "score.txt" };
 
-// used for writing the score to a file
 void writeScore(int guessed_easy, int guessed_medium, int guessed_hard)
 {
 	assert(guessed_easy >= 0 && guessed_medium >= 0 && guessed_hard >= 0);
@@ -16,24 +15,21 @@ void writeScore(int guessed_easy, int guessed_medium, int guessed_hard)
 	out_score << guessed_medium << '\n';
 	out_score << guessed_hard << '\n';
 
-	out_score.close();
 }
 
 int readScore(int& guessed_easy, int& guessed_medium, int& guessed_hard) 
 {
 	std::ifstream score(score_file);
 
-	if (!score)
-		return error_code::score_fail;
-
 	score >> guessed_easy;
 	score >> guessed_medium;
 	score >> guessed_hard;
 
+	if (!score)		// handles both the "can't open file" and "file empty" cases
+		return error_code::score_fail;
+
 	if (guessed_easy < 0 || guessed_medium < 0 || guessed_hard < 0)
 		return error_code::negative_score;
-
-	score.close();
 
 	return error_code::score_success;
 }

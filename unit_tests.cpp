@@ -3,6 +3,7 @@
 #include "game.h"
 #include "score.h"
 #include "input.h"
+#include "word_choosing.h"
 #include <cassert>
 #include <chrono>
 #include <iostream>
@@ -176,22 +177,29 @@ void testreadScore()
 	assert(readScore(test1, test2, test3) == error_code::score_success);
 	assert(test1 == 79 && test2 == 51 && test3 == 2);
 
-	std::cout << "25% done\n";
+	std::cout << "20% done\n";
 	std::cout << "10s till second check\n";
 	std::this_thread::sleep_for(10s);
 
 	assert(readScore(test1, test2, test3) == error_code::negative_score);
 	assert(test1 == -1 && test2 == -2 && test3 == 2);
 
-	std::cout << "50% done\n";
+	std::cout << "40% done\n";
 	std::cout << "10s till third check\n";
 	std::this_thread::sleep_for(10s);
 
 	assert(readScore(test1, test2, test3) == error_code::score_success);
 	assert(test1 == 0 && test2 == 0 && test3 == 0);
 
-	std::cout << "75% done\n";
+	std::cout << "60% done\n";
 	std::cout << "10s till fourth check\n";
+	std::this_thread::sleep_for(10s);
+
+	assert(readScore(test1, test2, test3) == error_code::score_fail);
+	assert(test1 == 0 && test2 == 0 && test3 == 0);
+
+	std::cout << "80% done\n";
+	std::cout << "10s till fifth check\n";
 	std::this_thread::sleep_for(10s);
 
 	assert(readScore(test1, test2, test3) == error_code::score_fail);
@@ -199,4 +207,14 @@ void testreadScore()
 
 	std::cout << "100% done\n";
 	
+}
+
+void testtopicChooser()
+{
+	for (int i{ 1 }; i <= 10; ++i)
+	{
+		std::cout << topicChooser() << '\t';
+		if (i % 5 == 0)
+			std::cout << '\n';
+	}
 }
