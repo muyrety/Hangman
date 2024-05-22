@@ -1,4 +1,4 @@
-animals
+TOPIC: animals
 chimpanzee
 platypus
 porcupine
@@ -8,38 +8,31 @@ armadillo
 crocodile
 octopus
 aardvark
-endoftopic
 
-food
+TOPIC: food
 quesadilla
 bruschetta
 gnocchi
 quinoa
 paella
-endoftopic
 
-fruits
+TOPIC: fruits
 pomegranate
 persimmon
 durian
 kumquat
 lychee
-endoftopic
 
-music
+TOPIC: music
 symphony
 saxophone
 percussion
 harpsichord
 theremin
-endoftopic
 
-sports
+TOPIC: sports
 gymnastics
 triathlon
 javelin
 badminton
 decathlon
-endoftopic
-
-endoffile

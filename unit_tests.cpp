@@ -218,3 +218,30 @@ void testtopicChooser()
 			std::cout << '\n';
 	}
 }
+
+void testwordChooser()
+{
+	std::cout << "EASY ANIMAL: \n";
+	for (int i{ 1 }; i <= 10; ++i)
+	{
+		std::cout << wordChooser(1, "animals") << '\t';
+		if (i % 5 == 0)
+			std::cout << '\n';
+	}
+
+	std::cout << "MEDIUM ANIMAL: \n";
+	for (int i{ 1 }; i <= 10; ++i)
+	{
+		std::cout << wordChooser(2, "animals") << '\t';
+		if (i % 5 == 0)
+			std::cout << '\n';
+	}
+
+	std::cout << "HARD ANIMAL: \n";
+	for (int i{ 1 }; i <= 10; ++i)
+	{
+		std::cout << wordChooser(3, "animals") << '\t';
+		if (i % 5 == 0)
+			std::cout << '\n';
+	}
+}

@@ -9,7 +9,7 @@ void writeScore(int guessed_easy, int guessed_medium, int guessed_hard)
 {
 	assert(guessed_easy >= 0 && guessed_medium >= 0 && guessed_hard >= 0);
 
-	std::ofstream out_score(score_file);
+	std::ofstream out_score{ score_file };
 
 	out_score << guessed_easy << '\n';
 	out_score << guessed_medium << '\n';
@@ -19,7 +19,7 @@ void writeScore(int guessed_easy, int guessed_medium, int guessed_hard)
 
 int readScore(int& guessed_easy, int& guessed_medium, int& guessed_hard) 
 {
-	std::ifstream score(score_file);
+	std::ifstream score{ score_file };
 
 	score >> guessed_easy;
 	score >> guessed_medium;

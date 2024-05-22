@@ -1,4 +1,4 @@
-animals
+TOPIC: animals
 cat
 dog
 fish
@@ -9,38 +9,31 @@ bear
 lion
 pig
 rat
-endoftopic
 
-food
+TOPIC: food
 pizza
 apple
 bread
 cheese
 cake
-endoftopic
 
-fruits
+TOPIC: fruits
 pear
 grape
 kiwi
 mango
 peach
-endoftopic
 
-music
+TOPIC: music
 song
 beat
 drum
 note
 sing
-endoftopic
 
-sports
+TOPIC: sports
 ball
 run
 swim
 goal
 jump
-endoftopic
-
-endoffile

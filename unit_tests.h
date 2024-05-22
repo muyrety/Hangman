@@ -19,4 +19,6 @@ void testreadScore();
 
 void testtopicChooser();
 
+void testwordChooser();
+
 #endif

@@ -1,4 +1,4 @@
-animals
+TOPIC: animals
 elephant
 monkey
 rabbit
@@ -9,38 +9,31 @@ hippo
 panda
 cheetah
 koala
-endoftopic
 
-food
+TOPIC: food
 spaghetti
 avocado
 sandwich
 broccoli
 sausage
-endoftopic
 
-fruits
+TOPIC: fruits
 pineapple
 raspberry
 strawberry
 blueberry
 watermelon
-endoftopic
 
-music
+TOPIC: music
 melody
 rhythm
 guitar
 piano
 voice
-endoftopic
 
-sports
+TOPIC: sports
 soccer
 tennis
 basketball
 hockey
 boxing
-endoftopic
-
-endoffile
