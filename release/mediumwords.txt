@@ -1,0 +1,39 @@
+TOPIC: animals
+elephant
+monkey
+rabbit
+kangaroo
+giraffe
+tiger
+hippo
+panda
+cheetah
+koala
+
+TOPIC: food
+spaghetti
+avocado
+sandwich
+broccoli
+sausage
+
+TOPIC: fruits
+pineapple
+raspberry
+strawberry
+blueberry
+watermelon
+
+TOPIC: music
+melody
+rhythm
+guitar
+piano
+voice
+
+TOPIC: sports
+soccer
+tennis
+basketball
+hockey
+boxing

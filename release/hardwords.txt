@@ -1,0 +1,38 @@
+TOPIC: animals
+chimpanzee
+platypus
+porcupine
+rhinoceros
+orangutan
+armadillo
+crocodile
+octopus
+aardvark
+
+TOPIC: food
+quesadilla
+bruschetta
+gnocchi
+quinoa
+paella
+
+TOPIC: fruits
+pomegranate
+persimmon
+durian
+kumquat
+lychee
+
+TOPIC: music
+symphony
+saxophone
+percussion
+harpsichord
+theremin
+
+TOPIC: sports
+gymnastics
+triathlon
+javelin
+badminton
+decathlon
