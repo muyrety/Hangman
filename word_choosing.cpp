@@ -9,7 +9,8 @@
 
 static std::string getFileName(int game_mode)
 {
-	assert(game_mode >= 1 && game_mode <= 3);
+	assert(game_mode == game_mode::easy || game_mode == game_mode::medium
+		|| game_mode::hard);
 
 	constexpr auto easy_word_file{ "easywords.txt" };
 	constexpr auto medium_word_file{ "mediumwords.txt" };
@@ -17,11 +18,13 @@ static std::string getFileName(int game_mode)
 
 	switch (game_mode)
 	{
-	case 1:
+	case game_mode::easy:
 		return easy_word_file;
-	case 2:
+
+	case game_mode::medium:
 		return medium_word_file;
-	case 3:
+
+	case game_mode::hard:
 		return hard_word_file;
 	}
 	return "";		// shouldn't be possible to reach this

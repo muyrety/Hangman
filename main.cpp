@@ -1,4 +1,3 @@
-#define UNIT_TESTING
 #ifdef UNIT_TESTING
 
 #include "unit_tests.h"
@@ -69,6 +68,7 @@ int main()
 			std::cerr << "Can't open the score file!\n";
 			return 1;
 		}
+
 		// if negative score values were read
 		else if (score_error_code == error_code::negative_score)
 		{
@@ -79,11 +79,10 @@ int main()
 
 	titleScreen(guessed_easy, guessed_medium, guessed_hard);
 
-	// used for storing the game_mode player wants to play on
+	// used for storing the game mode player wants to play on
 	int game_mode{ getGameMode() };
 
-	// if player selects "Reset score"
-	while (game_mode == 4) 
+	while (game_mode == game_mode::score_reset) 
 	{
 		guessed_easy = 0;										// score values are set to 0
 		guessed_medium = 0;
@@ -97,33 +96,28 @@ int main()
 		game_mode = getGameMode();							// asks for a new game_mode value
 	}
 
-	// if player selects "Exit", program is terminated
-	if (game_mode == 5)
+	if (game_mode == game_mode::exit)
 		return 0;
 
 	// stores a randomly selected topic by topicChooser()
 	std::string topic{ topicChooser() };
 
-	// if topicChooser() returns "error", it means the topic file couldn't be accessed
-	if (topic == "error") 
+	if (topic == error_code::topic_fail) 
 	{
 		std::cerr << "There has been an error while retrieving the topics\n";
 		return 1;
 	}
 
-	// Word player is trying to guess. Is initialized with a random word from wordChooser().
+	// word player is trying to guess. Is initialized with a random word from wordChooser().
 	std::string word{ wordChooser(game_mode, topic) };
 
-	// if wordChooser() returns "error1" that means there has been an error while opening the chosen difficulties
-	// words file
-	if (word == "error1") 
+	if (word == error_code::word_fail) 
 	{
 		std::cerr << "There has been an error obtaining words!\n";
 		return 1;
 	}
 
-	// if wordChooser() returns "error2" that means that the program couldn't find the topic in the selected words file
-	if (word == "error2") 
+	if (word == error_code::word_topic_not_found) 
 	{
 		std::cerr << "Topic not found in the word file!\n";
 		return 1;
@@ -134,7 +128,7 @@ int main()
 	std::string game_letters (word.size(), '_');
 
 	// contains all the players incorrect guesses
-	std::vector <char> incorrect_guesses{ };
+	std::vector <char> incorrect_guesses{};
 
 	int tries{ 0 };
 
@@ -143,10 +137,8 @@ int main()
 
 	constexpr int max_tries{ 6 };
 
-	// main playing function
 	while (!game_lost && !game_won) 
 	{
-
 		bool guessed_correctly{ false };		// reset the guessed_correctly boolean since a new iteration has began
 
 		printHangmanPicture(tries);
