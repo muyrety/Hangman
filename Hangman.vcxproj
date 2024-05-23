@@ -31,6 +31,7 @@
     <Text Include="easywords.txt" />
     <Text Include="hardwords.txt" />
     <Text Include="mediumwords.txt" />
+    <Text Include="score.txt" />
     <Text Include="topics.txt" />
   </ItemGroup>
   <ItemGroup>

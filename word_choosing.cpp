@@ -24,7 +24,19 @@ static std::string getFileName(int game_mode)
 	case 3:
 		return hard_word_file;
 	}
-	return "";
+	return "";		// shouldn't be possible to reach this
+}
+
+// returns true on success, false on failure
+static bool getToLine(std::ifstream& in, std::string_view line)
+{
+	std::string temp{};
+	while (std::getline(in >> std::ws, temp))
+	{
+		if (temp == line)
+			return true;
+	}
+	return false;
 }
 
 std::string topicChooser() 
@@ -68,26 +80,29 @@ std::string wordChooser(int game_mode, std::string topic)
 		
 	std::string temp{};
 
+	/*
 	// used for reading the file until selected topic is reached
-	do 
+	while (std::getline(word >> std::ws, temp))
 	{
-		std::getline(word >> std::ws, temp);
+		if (temp == ("TOPIC: " + topic))	// if end of file is reached without reaching topic first, topic is not in the file
+			break;
 
-		if (word.eof())	// if end of file is reached without reaching topic first, topic is not in the file
-			return error_code::word_topic_not_found;
+	} 
+	*/
 
-	} while (temp != ("TOPIC: " + topic));
+	if (!getToLine(word, "TOPIC: " + topic))
+		return error_code::word_topic_not_found;
 
 	// used for filling words vector with words in between the selected topics name and next topic label
 	while (word >> temp) 
 	{
-		if (temp == "TOPIC:" || word.eof())
+		if (temp == "TOPIC:")
 			break;
-		else 
-			words.push_back(temp);
+		
+		words.push_back(temp);
 	}
 
-	if (words.size() == 0)
+	if (words.size() == 0)	// if no words could be read
 		return error_code::word_fail;
 
 	// the selected word is a randomly chosen element from the words vector

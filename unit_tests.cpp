@@ -211,7 +211,7 @@ void testreadScore()
 
 void testtopicChooser()
 {
-	for (int i{ 1 }; i <= 10; ++i)
+	for (int i{ 1 }; i <= 20; ++i)
 	{
 		std::cout << topicChooser() << '\t';
 		if (i % 5 == 0)
@@ -221,26 +221,26 @@ void testtopicChooser()
 
 void testwordChooser()
 {
-	std::cout << "EASY ANIMAL: \n";
+	std::cout << "EASY SPORTS: \n";
 	for (int i{ 1 }; i <= 10; ++i)
 	{
-		std::cout << wordChooser(1, "animals") << '\t';
+		std::cout << wordChooser(1, "sports") << '\t';
 		if (i % 5 == 0)
 			std::cout << '\n';
 	}
 
-	std::cout << "MEDIUM ANIMAL: \n";
+	std::cout << "MEDIUM SPORTS: \n";
 	for (int i{ 1 }; i <= 10; ++i)
 	{
-		std::cout << wordChooser(2, "animals") << '\t';
+		std::cout << wordChooser(2, "sports") << '\t';
 		if (i % 5 == 0)
 			std::cout << '\n';
 	}
 
-	std::cout << "HARD ANIMAL: \n";
+	std::cout << "HARD SPORTS: \n";
 	for (int i{ 1 }; i <= 10; ++i)
 	{
-		std::cout << wordChooser(3, "animals") << '\t';
+		std::cout << wordChooser(3, "sports") << '\t';
 		if (i % 5 == 0)
 			std::cout << '\n';
 	}

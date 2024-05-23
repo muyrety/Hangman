@@ -1,4 +1,3 @@
-#define UNIT_TESTING
 #ifdef UNIT_TESTING
 
 #include "unit_tests.h"

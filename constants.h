@@ -1,8 +1,6 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
-#include <string_view>
-
 namespace error_code
 {
 	inline constexpr int score_success{ 0 };
