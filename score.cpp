@@ -44,12 +44,12 @@ void incrementScore(int game_mode, int& guessed_easy,
 	{
 	case 1:
 		++guessed_easy;
-		break;
+		return;
 	case 2:
 		++guessed_medium;
-		break;
+		return;
 	case 3:
 		++guessed_hard;
-		break;
+		return;
 	}
 }

@@ -1,3 +1,4 @@
+#include "input.h"
 #include "game.h"
 #include <cctype>
 #include <cstdlib>

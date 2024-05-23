@@ -1,3 +1,4 @@
+#define UNIT_TESTING
 #ifdef UNIT_TESTING
 
 #include "unit_tests.h"
@@ -6,32 +7,32 @@
 
 int main()
 {
-	// testcheckGuess();
-	// std::cout << "testcheckGuess() -- all tests passed\n";
+	testcheckGuess();
+	std::cout << "testcheckGuess() -- all tests passed\n";
 
-	// testchangeGameLetters();
-	// std::cout << "testchangeGameLetters() -- all tests passed\n";
+	testchangeGameLetters();
+	std::cout << "testchangeGameLetters() -- all tests passed\n";
 
-	// testpreviouslyGuessed();
-	// std::cout << "testpreviouslyGuessed() -- all tests passed\n";
+	testpreviouslyGuessed();
+	std::cout << "testpreviouslyGuessed() -- all tests passed\n";
 
-	// testgetGuess();
-	// std::cout << "testgetGuess() -- all tests passed\n";
+	testgetGuess();
+	std::cout << "testgetGuess() -- all tests passed\n";
 
-	// testgetGameMode();
-	// std::cout << "testgetGameMode() -- all tests passed\n";
+	testgetGameMode();
+	std::cout << "testgetGameMode() -- all tests passed\n";
 
-	// testincrementScore();
-	// std::cout << "testincrementScore() -- all tests passed\n";
+	testincrementScore();
+	std::cout << "testincrementScore() -- all tests passed\n";
 
-	// testwriteScore();
-	// std::cout << "testwriteScore() -- all tests passed\n";
+	testwriteScore();
+	std::cout << "testwriteScore() -- all tests passed\n";
 
-	// testreadScore();
-	// std::cout << "testreadScore() -- all tests passed\n";
+	testreadScore();
+	std::cout << "testreadScore() -- all tests passed\n";
 
-	// testtopicChooser();
-	// std::cout << "testtopicChooser() -- all tests passed\n";
+	testtopicChooser();
+	std::cout << "testtopicChooser() -- all tests passed\n";
 
 	testwordChooser();
 	std::cout << "testwordChooser() -- all tests passed\n";
