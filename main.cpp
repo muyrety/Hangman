@@ -1,45 +1,3 @@
-#ifdef UNIT_TESTING
-
-#include "unit_tests.h"
-#include "word_choosing.h"
-#include <iostream>
-
-int main()
-{
-	testcheckGuess();
-	std::cout << "testcheckGuess() -- all tests passed\n";
-
-	testchangeGameLetters();
-	std::cout << "testchangeGameLetters() -- all tests passed\n";
-
-	testpreviouslyGuessed();
-	std::cout << "testpreviouslyGuessed() -- all tests passed\n";
-
-	testgetGuess();
-	std::cout << "testgetGuess() -- all tests passed\n";
-
-	testgetGameMode();
-	std::cout << "testgetGameMode() -- all tests passed\n";
-
-	testincrementScore();
-	std::cout << "testincrementScore() -- all tests passed\n";
-
-	testwriteScore();
-	std::cout << "testwriteScore() -- all tests passed\n";
-
-	testreadScore();
-	std::cout << "testreadScore() -- all tests passed\n";
-
-	testtopicChooser();
-	std::cout << "testtopicChooser() -- all tests passed\n";
-
-	testwordChooser();
-	std::cout << "testwordChooser() -- all tests passed\n";
-
-	return 0;
-}
-
-#else
 #include "constants.h"
 #include "display.h"
 #include "game.h"
@@ -51,7 +9,7 @@ int main()
 #include <string>
 #include <vector>
 
-static void stopAtEnd()
+static void waitForInput()
 {
 	std::cin.clear(); // reset any error flags
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // ignore any characters in the input buffer until we find an enter character
@@ -74,7 +32,7 @@ int main()
 		if (score_error_code == error_code::score_fail)
 		{
 			std::cerr << "Can't open the score file!\n";
-			stopAtEnd();
+			waitForInput();
 			return 1;
 		}
 
@@ -82,7 +40,7 @@ int main()
 		else if (score_error_code == error_code::negative_score)
 		{
 			std::cerr << "Negative score values read!\n";
-			stopAtEnd();
+			waitForInput();
 			return 1;
 		}
 	}
@@ -109,7 +67,7 @@ int main()
 	if (game_mode == game_mode::exit)
 	{
 		std::cout << "exiting...\n";
-		stopAtEnd();
+		waitForInput();
 		return 0;
 	}
 
@@ -119,7 +77,7 @@ int main()
 	if (topic == error_code::topic_fail) 
 	{
 		std::cerr << "There has been an error while retrieving the topics\n";
-		stopAtEnd();
+		waitForInput();
 		return 1;
 	}
 
@@ -129,14 +87,14 @@ int main()
 	if (word == error_code::word_fail) 
 	{
 		std::cerr << "There has been an error obtaining words!\n";
-		stopAtEnd();
+		waitForInput();
 		return 1;
 	}
 
 	if (word == error_code::word_topic_not_found) 
 	{
 		std::cerr << "Topic not found in the word file!\n";
-		stopAtEnd();
+		waitForInput();
 		return 1;
 	}
 
@@ -199,8 +157,7 @@ int main()
 		}
 	}
 
-	stopAtEnd();
+	waitForInput();
 
 	return 0;
 }
-#endif
