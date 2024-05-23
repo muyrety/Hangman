@@ -1,0 +1,39 @@
+TOPIC: animals
+cat
+dog
+fish
+bird
+frog
+duck
+bear
+lion
+pig
+rat
+
+TOPIC: food
+pizza
+apple
+bread
+cheese
+cake
+
+TOPIC: fruits
+pear
+grape
+kiwi
+mango
+peach
+
+TOPIC: music
+song
+beat
+drum
+note
+sing
+
+TOPIC: sports
+ball
+run
+swim
+goal
+jump
