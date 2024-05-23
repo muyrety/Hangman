@@ -47,8 +47,16 @@ int main()
 #include "score.h"
 #include "word_choosing.h"
 #include <iostream>
+#include <limits>
 #include <string>
 #include <vector>
+
+static void stopAtEnd()
+{
+	std::cin.clear(); // reset any error flags
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // ignore any characters in the input buffer until we find an enter character
+	std::cin.get(); // get one more char from the user
+}
 
 int main() 
 {
@@ -66,6 +74,7 @@ int main()
 		if (score_error_code == error_code::score_fail)
 		{
 			std::cerr << "Can't open the score file!\n";
+			stopAtEnd();
 			return 1;
 		}
 
@@ -73,6 +82,7 @@ int main()
 		else if (score_error_code == error_code::negative_score)
 		{
 			std::cerr << "Negative score values read!\n";
+			stopAtEnd();
 			return 1;
 		}
 	}
@@ -97,7 +107,11 @@ int main()
 	}
 
 	if (game_mode == game_mode::exit)
+	{
+		std::cout << "exiting...\n";
+		stopAtEnd();
 		return 0;
+	}
 
 	// stores a randomly selected topic by topicChooser()
 	std::string topic{ topicChooser() };
@@ -105,6 +119,7 @@ int main()
 	if (topic == error_code::topic_fail) 
 	{
 		std::cerr << "There has been an error while retrieving the topics\n";
+		stopAtEnd();
 		return 1;
 	}
 
@@ -114,12 +129,14 @@ int main()
 	if (word == error_code::word_fail) 
 	{
 		std::cerr << "There has been an error obtaining words!\n";
+		stopAtEnd();
 		return 1;
 	}
 
 	if (word == error_code::word_topic_not_found) 
 	{
 		std::cerr << "Topic not found in the word file!\n";
+		stopAtEnd();
 		return 1;
 	}
 
@@ -181,6 +198,8 @@ int main()
 			break;
 		}
 	}
+
+	stopAtEnd();
 
 	return 0;
 }
