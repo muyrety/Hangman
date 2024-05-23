@@ -132,14 +132,11 @@ int main()
 
 	int tries{ 0 };
 
-	bool game_won{ false };
-	bool game_lost{ false };
-
 	constexpr int max_tries{ 6 };
 
-	while (!game_lost && !game_won) 
+	while (true) 
 	{
-		bool guessed_correctly{ false };		// reset the guessed_correctly boolean since a new iteration has began
+		bool guessed_correctly{ false };	// reset the guessed_correctly boolean since a new iteration has began
 
 		printHangmanPicture(tries);
 		std::cout << "Topic of the word: " << topic << '\n';
@@ -157,21 +154,20 @@ int main()
 			std::cout << "Correct!\n";
 			changeGameLetters(guess, game_letters, word);
 		}
-
 		else
 		{
 			std::cout << "You guessed incorrectly\n";
 			incorrect_guesses.push_back(guess);
 			++tries;
 		}
-	
+
 		// checks if game has been lost
 		if (tries >= max_tries) 
 		{							 
 			printHangmanPicture(tries);
 			std::cout << "GAME OVER!\n";
 			std::cout << "The correct word was " << word << '\n';
-			game_lost = true;
+			break;
 		}
 
 		// if game is not lost, checks if game is won
@@ -182,7 +178,7 @@ int main()
 			std::cout << "Congrats! You won!\n";
 			incrementScore(game_mode, guessed_easy, guessed_medium, guessed_hard);
 			writeScore(guessed_easy, guessed_medium, guessed_hard);
-			game_won = true;
+			break;
 		}
 	}
 
