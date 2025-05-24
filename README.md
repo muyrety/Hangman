@@ -1,3 +1,4 @@
+_Migrated to [https://git.ari.lt/muyrety/Hangman](https://git.ari.lt/muyrety/Hangman)_
 # Hangman
 This hangman console game features the ability to guess some randomly chosen word.
 The word is of some randomly chosen topic that is shown to the user.
